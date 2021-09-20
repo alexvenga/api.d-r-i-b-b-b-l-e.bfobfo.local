@@ -11,8 +11,29 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
-    require('postcss-import'),
-    require('tailwindcss'),
-    require('autoprefixer'),
-]);
+mix
+    .setPublicPath('public/assets')
+    .setResourceRoot('/assets/')
+
+    .js('resources/js/app.js', 'js')
+
+    //.js('resources/js/axios.js', 'js')
+
+
+    .postCss('resources/css/app.css', 'css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+        require('postcss-nested'),
+        require('autoprefixer'),
+    ])
+
+    //.copy(
+    //    'resources/img/*', 'public/assets/img',
+    //)
+
+    //.copy(
+    //    'resources/css/typography.min.css', 'public/assets/css/typography.min.css',
+    //);
+
+    //.copy('resources/fonts/*', 'public/assets/fonts');
+    .version();
