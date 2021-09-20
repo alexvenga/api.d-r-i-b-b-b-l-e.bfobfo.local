@@ -22,11 +22,13 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $userName = $this->faker->userName();
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'id'       => mt_rand(1, 100000000),
+            'nickname' => $userName,
+            'name'     => $this->faker->name(),
+            'avatar'   => 'https://i.pravatar.cc/150?u='.$userName,
+
             'remember_token' => Str::random(10),
         ];
     }

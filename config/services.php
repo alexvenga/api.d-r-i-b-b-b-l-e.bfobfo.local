@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'dribbble' => [
+        'client_id' => env('DRIBBBLE_CLIENT_ID'),
+        'client_secret' => env('DRIBBBLE_CLIENT_SECRET'),
+        'redirect' => env('DRIBBBLE_REDIRECT_URI')
+    ],
+
 ];
