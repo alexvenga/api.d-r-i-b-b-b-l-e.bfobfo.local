@@ -12,6 +12,9 @@ Route::group([
     Route::get('/users', \App\Http\Livewire\Admin\EditUsersComponent::class)
         ->name('users');
 
+    Route::get('/files', \App\Http\Livewire\Admin\EditFilesComponent::class)
+        ->name('files');
+
     /*
     Route::get('/languages', \App\Http\Livewire\Admin\EditLanguagesComponent::class)
         ->middleware('permission:languages')

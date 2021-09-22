@@ -8,7 +8,7 @@ Route::post('/logout', function (\Illuminate\Http\Request $request) {
     Auth::guard('web')->logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect('/');
+    return redirect()->back();
 })
     ->middleware('auth')
     ->name('logout');

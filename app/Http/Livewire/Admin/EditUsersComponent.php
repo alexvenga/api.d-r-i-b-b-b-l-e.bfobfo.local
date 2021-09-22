@@ -20,6 +20,7 @@ class EditUsersComponent extends Component
     public $filters = [
         'searchAllStrings' => '',
         'searchIsAdmin' => false,
+        'searchOnlyDeleted' => false,
     ];
 
     public bool $showEditModal = false;

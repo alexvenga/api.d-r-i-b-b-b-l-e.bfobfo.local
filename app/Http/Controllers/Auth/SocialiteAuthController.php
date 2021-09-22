@@ -23,25 +23,25 @@ class SocialiteAuthController extends Controller
                 $user->update([
                     'nickname' => $userSocial->getNickname(),
                     'name'     => $userSocial->getName(),
-                    'avatar'    => $userSocial->getAvatar(),
+                    'token'    => $userSocial->token,
+                    'avatar'   => $userSocial->getAvatar(),
                 ]);
             } else {
                 $user = User::create([
-                    'id'                => $userSocial->getId(),
-                    'nickname'          => $userSocial->getNickname(),
-                    'name'              => $userSocial->getName(),
-                    'avatar'             => $userSocial->getAvatar(),
+                    'id'       => $userSocial->getId(),
+                    'nickname' => $userSocial->getNickname(),
+                    'name'     => $userSocial->getName(),
+                    'token'    => $userSocial->token,
+                    'avatar'   => $userSocial->getAvatar(),
                 ]);
             }
-            if($user->deleted_at) {
+            if ($user->deleted_at) {
                 abort('403');
             }
-            Auth::login($user, true);
+            Auth::login($user);
             return redirect()->intended('/');
         } catch (\Throwable $error) {
-
-            dd($error);
-            //return redirect()->back();
+            return redirect(route('home'));
         }
     }
 }

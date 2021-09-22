@@ -15,11 +15,11 @@
         </div>
 
         @if ($error)
-            <div class="mt-1 text-sm text-red-600">{{ $error }}</div>
+            <div class="mt-2 text-sm text-red-600">{{ $error }}</div>
         @endif
 
         @if ($helpText)
-            <p class="mt-1 text-sm">{{ $helpText }}</p>
+            <p class="mt-2 text-sm">{{ $helpText }}</p>
         @endif
 
     </div>
