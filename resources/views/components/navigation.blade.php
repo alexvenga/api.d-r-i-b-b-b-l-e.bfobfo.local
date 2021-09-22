@@ -32,26 +32,26 @@
                 <x-slot name="content">
 
                     @if(Auth::user()->isAdmin())
-                        <x-dropdown-link href="{{ route('admin.users') }}">
+                        <x-dropdown.link href="{{ route('admin.users') }}">
                             Admin Panel
-                        </x-dropdown-link>
+                        </x-dropdown.link>
                     @endif
 
                     <!-- Authentication -->
-                    <form method="POST" action="{{ route('auth.logout') }}">
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
-                        <x-dropdown-link :href="route('auth.logout')"
+                        <x-dropdown.link :href="route('logout')"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                             Log Out
-                        </x-dropdown-link>
+                        </x-dropdown.link>
                     </form>
                 </x-slot>
             </x-dropdown>
         </div>
 
     @else
-        <a href="{{ route('auth.redirect') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Login</a>
+        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Login</a>
     @endauth
 </div>

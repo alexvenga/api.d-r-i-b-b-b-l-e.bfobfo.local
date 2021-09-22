@@ -18,7 +18,7 @@ class SocialiteAuthController extends Controller
 
         try {
             $userSocial = Socialite::driver('dribbble')->user();
-            $user = User::find($userSocial->getId());
+            $user = User::withTrashed()->find($userSocial->getId());
             if ($user) {
                 $user->update([
                     'nickname' => $userSocial->getNickname(),
@@ -32,6 +32,9 @@ class SocialiteAuthController extends Controller
                     'name'              => $userSocial->getName(),
                     'avatar'             => $userSocial->getAvatar(),
                 ]);
+            }
+            if($user->deleted_at) {
+                abort('403');
             }
             Auth::login($user, true);
             return redirect()->intended('/');
